@@ -1,6 +1,6 @@
-package net.rouly.ascii.util
+package net.rouly.ascii.queue.mutable
 
-sealed class MutableCircularQueue[T] protected (protected var list: List[T]) {
+sealed class CircularQueue[T] protected (protected var list: List[T]) {
 
   def enqueue(elem: T): Unit = synchronized {
     list = list :+ elem
@@ -28,7 +28,7 @@ sealed class MutableCircularQueue[T] protected (protected var list: List[T]) {
   private def safely[A](a: => A): Option[A] = if (list.isEmpty) None else Some(a)
 }
 
-object MutableCircularQueue {
-  def empty[T] = new MutableCircularQueue(List.empty[T])
-  def apply[T](ts: T*) = new MutableCircularQueue[T](ts.toList)
+object CircularQueue {
+  def empty[T] = new CircularQueue(List.empty[T])
+  def apply[T](ts: T*) = new CircularQueue[T](ts.toList)
 }

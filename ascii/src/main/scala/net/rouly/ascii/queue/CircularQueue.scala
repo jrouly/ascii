@@ -1,4 +1,4 @@
-package net.rouly.ascii.util
+package net.rouly.ascii.queue
 
 sealed class CircularQueue[T] protected (protected val list: List[T]) {
 

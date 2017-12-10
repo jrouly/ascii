@@ -2,19 +2,19 @@ package net.rouly.ascii.template
 
 import org.scalatest.{FunSpec, Matchers}
 
-class TemplateSpec
+class RepeatingOverlayTemplateSpec
   extends FunSpec
   with Matchers {
 
   describe("apply") {
 
     it("should return the underlying template if an empty overlay is given") {
-      val template: Template = new StringBasedTemplate(" * * * * * * * * * * * * ") with CircularQueueTemplate
+      val template: Template = new StringBasedTemplate(" * * * * * * * * * * * * ") with RepeatingOverlayTemplate
       template("") shouldEqual " * * * * * * * * * * * * "
     }
 
     it("should repeatedly apply the overlay") {
-      val template: Template = new StringBasedTemplate(" 1 2 3 4 5 6 7 8 9 0 1 2 ") with CircularQueueTemplate
+      val template: Template = new StringBasedTemplate(" 1 2 3 4 5 6 7 8 9 0 1 2 ") with RepeatingOverlayTemplate
       template("michel") shouldEqual " m i c h e l m i c h e l "
     }
 
@@ -23,7 +23,7 @@ class TemplateSpec
         |    ***
         |   *****
         |  *******
-        |     *""".stripMargin) with CircularQueueTemplate
+        |     *""".stripMargin) with RepeatingOverlayTemplate
 
       template("michel") shouldEqual
         """     m
@@ -34,7 +34,7 @@ class TemplateSpec
     }
 
     it("should render templates from a resource file") {
-      val template: Template = new ResourceBasedTemplate("templates/test.template") with CircularQueueTemplate
+      val template: Template = new ResourceBasedTemplate("templates/test.template") with RepeatingOverlayTemplate
       val expected =
         "m           i\n" +
           "    c           h\n" +

@@ -1,4 +1,4 @@
-package net.rouly.ascii.util
+package net.rouly.ascii.queue
 
 import org.scalatest.{FunSpec, Matchers, OptionValues}
 
