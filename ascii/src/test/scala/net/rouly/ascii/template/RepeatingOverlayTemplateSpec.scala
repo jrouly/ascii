@@ -34,7 +34,7 @@ class RepeatingOverlayTemplateSpec
     }
 
     it("should render templates from a resource file") {
-      val template: Template = new ResourceBasedTemplate("templates/test.template") with RepeatingOverlayTemplate
+      val template: Template = new ResourceBasedTemplate("test") with RepeatingOverlayTemplate
       val expected =
         "m           i\n" +
           "    c           h\n" +

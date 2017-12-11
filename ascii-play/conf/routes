@@ -1,0 +1,2 @@
+GET        /                           net.rouly.ascii.play.controllers.TemplateController.renderEmpty
+GET        /:text                      net.rouly.ascii.play.controllers.TemplateController.render(text: String)
